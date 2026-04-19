@@ -1,5 +1,6 @@
 ## Hi there 👋
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=anuraghazra&theme=dark&show_icons=true)
+![](https://raw.githubusercontent.com/hhhhzx/hhhhzx/refs/heads/output/github-contribution-grid-snake.svg) 
 <p align="center">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=git,kubernetes,docker,c,vim" />
