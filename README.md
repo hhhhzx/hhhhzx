@@ -24,6 +24,22 @@
 - 🎮 兴趣爱好：游戏、折腾工具、把脑子里的点子做成能跑起来的东西
 - ✨ 小目标：写更清晰的代码，做更有温度的产品
 
+## 📫 联系我
+
+<div align="center">
+
+<a href="https://github.com/hhhhzx">
+  <img src="https://img.shields.io/badge/GitHub-hhhhzx-181717?style=for-the-badge&logo=github" alt="GitHub profile" />
+</a>
+<a href="https://github.com/hhhhzx?tab=repositories">
+  <img src="https://img.shields.io/badge/Repositories-Projects-2563EB?style=for-the-badge&logo=github" alt="GitHub repositories" />
+</a>
+<a href="https://github.com/hhhhzx/hhhhzx/issues">
+  <img src="https://img.shields.io/badge/Message-Issue-22C55E?style=for-the-badge&logo=github" alt="Leave a message" />
+</a>
+
+</div>
+
 ## 🛠️ 技术栈
 
 <div align="center">
@@ -83,6 +99,14 @@
 | 前端应用 | Vue3 / React / TypeScript / Vite | 组件设计、状态管理、页面性能与工程化 |
 | 后端服务 | Spring Boot / Java / MySQL / Redis | 接口设计、数据建模、缓存与稳定性 |
 | DevOps & Tools | Git / Docker / GitHub Actions | 自动化流程、部署体验、开发效率 |
+
+## 🚩 代表项目
+
+| 项目 | 简介 | 技术栈 / 关键词 |
+| --- | --- | --- |
+| [hhhhzx](https://github.com/hhhhzx/hhhhzx) | 当前 GitHub Profile 仓库，用来展示个人主页、贡献动画和技术栈信息 | Markdown / SVG / GitHub Actions |
+| [更多项目](https://github.com/hhhhzx?tab=repositories) | 持续整理学习项目、前端练习、全栈实践和工具实验 | Vue / React / Java / Spring Boot |
+| Coming Soon | 这里可以放你最想展示的 1～3 个项目，我可以继续帮你改成更像作品集的卡片 | 项目亮点 / 在线预览 / 技术方案 |
 
 ## 🌟 最近想做得更好的事
 
