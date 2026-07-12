@@ -118,6 +118,10 @@ const projectsList = $("#projectsList");
 const output = $("#output");
 const status = $("#status");
 const form = $("#profileForm");
+const projectCount = $("#projectCount");
+const contactCount = $("#contactCount");
+const aboutCount = $("#aboutCount");
+const readmeLines = $("#readmeLines");
 
 function mdText(value = "") {
   return String(value).replace(/\|/g, "\\|").trim();
@@ -237,6 +241,10 @@ function input(name, value, placeholder = "") {
   return `<input data-field="${name}" value="${String(value ?? "").replaceAll('"', "&quot;")}" placeholder="${placeholder}" />`;
 }
 
+function setStatus(message) {
+  status.textContent = message;
+}
+
 function renderList() {
   form.title.value = config.profile.title;
   form.subtitle.value = config.profile.subtitle;
@@ -298,7 +306,11 @@ function updateFromDom(event) {
 
 function updateOutput() {
   output.value = renderReadme(config);
-  status.textContent = "Updated";
+  projectCount.textContent = config.projects.length;
+  contactCount.textContent = config.contacts.length;
+  aboutCount.textContent = config.about.length;
+  readmeLines.textContent = output.value.split("\n").length;
+  setStatus("Updated");
 }
 
 function download(filename, content) {
@@ -326,7 +338,10 @@ document.addEventListener("click", async (event) => {
     description: "项目简介",
     tech: "技术栈"
   });
-  if (add) renderList();
+  if (add) {
+    renderList();
+    setStatus("Added");
+  }
 
   if (event.target.matches("[data-remove]")) {
     const item = event.target.closest(".item");
@@ -335,24 +350,28 @@ document.addEventListener("click", async (event) => {
     if (item.dataset.type === "contact") config.contacts.splice(index, 1);
     if (item.dataset.type === "project") config.projects.splice(index, 1);
     renderList();
+    setStatus("Removed");
   }
 
   if (event.target.id === "loadSample") {
     config = structuredClone(defaultConfig);
     renderList();
+    setStatus("Sample loaded");
   }
 
   if (event.target.id === "copyReadme") {
     await navigator.clipboard.writeText(output.value);
-    status.textContent = "Copied";
+    setStatus("Copied");
   }
 
   if (event.target.id === "downloadReadme") {
     download("README.md", output.value);
+    setStatus("README downloaded");
   }
 
   if (event.target.id === "downloadConfig") {
     download("profile.config.json", JSON.stringify(config, null, 2));
+    setStatus("Config downloaded");
   }
 });
 
@@ -365,9 +384,9 @@ $("#importConfig").addEventListener("change", async (event) => {
   try {
     config = JSON.parse(await file.text());
     renderList();
-    status.textContent = "Config imported";
+    setStatus("Config imported");
   } catch (error) {
-    status.textContent = "Import failed";
+    setStatus("Import failed");
     alert(`配置文件解析失败：${error.message}`);
   }
 });

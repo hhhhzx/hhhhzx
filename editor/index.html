@@ -7,26 +7,85 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+    <div class="bg-orb orb-c"></div>
+
     <main class="app">
       <section class="hero">
-        <p class="eyebrow">hhhhzx profile builder</p>
-        <h1>可视化编辑 GitHub Profile README</h1>
-        <p>编辑配置、管理代表项目和联系方式，然后生成 README。少碰 Markdown，多做作品本身。</p>
-        <div class="actions">
-          <button id="loadSample">载入当前配置</button>
-          <label class="file-button">
-            导入配置
-            <input id="importConfig" type="file" accept="application/json" />
-          </label>
-          <button id="copyReadme">复制 README</button>
-          <button id="downloadReadme">下载 README.md</button>
-          <button id="downloadConfig">下载配置</button>
+        <div class="hero-content">
+          <p class="eyebrow">hhhhzx profile builder</p>
+          <h1>可视化编辑 GitHub Profile README</h1>
+          <p>编辑配置、管理代表项目和联系方式，然后生成 README。少碰 Markdown，多做作品本身。</p>
+          <div class="actions">
+            <button id="loadSample" class="ghost">载入当前配置</button>
+            <label class="file-button">
+              导入配置
+              <input id="importConfig" type="file" accept="application/json" />
+            </label>
+            <button id="copyReadme">复制 README</button>
+            <button id="downloadReadme">下载 README.md</button>
+            <button id="downloadConfig" class="secondary">下载配置</button>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="工作流说明">
+          <div class="hero-card-top">
+            <span class="status-dot"></span>
+            <span>Config-driven</span>
+          </div>
+          <ol class="flow">
+            <li><span>1</span> 编辑内容</li>
+            <li><span>2</span> 生成预览</li>
+            <li><span>3</span> 下载配置</li>
+            <li><span>4</span> 运行 npm run generate</li>
+          </ol>
+        </aside>
+      </section>
+
+      <section class="tips" aria-label="使用提示">
+        <article>
+          <strong>配置优先</strong>
+          <span>推荐先维护 profile.config.json，再生成 README。</span>
+        </article>
+        <article>
+          <strong>本地安全</strong>
+          <span>编辑器纯静态运行，不会自动上传或写入远程。</span>
+        </article>
+        <article>
+          <strong>即时预览</strong>
+          <span>左侧输入变化后，右侧 Markdown 会实时刷新。</span>
+        </article>
+      </section>
+
+      <section class="stats-strip" aria-label="当前内容统计">
+        <div>
+          <span id="projectCount">0</span>
+          <p>代表项目</p>
+        </div>
+        <div>
+          <span id="contactCount">0</span>
+          <p>联系方式</p>
+        </div>
+        <div>
+          <span id="aboutCount">0</span>
+          <p>关于我条目</p>
+        </div>
+        <div>
+          <span id="readmeLines">0</span>
+          <p>README 行数</p>
         </div>
       </section>
 
       <section class="grid">
         <form class="panel" id="profileForm">
-          <h2>基础信息</h2>
+          <div class="section-title">
+            <span>01</span>
+            <div>
+              <h2>基础信息</h2>
+              <p>控制 README 顶部标题、简介和打字动画。</p>
+            </div>
+          </div>
           <label>
             标题
             <input name="title" />
@@ -40,22 +99,43 @@
             <input name="typingSvg" />
           </label>
 
-          <h2>关于我</h2>
+          <div class="section-title">
+            <span>02</span>
+            <div>
+              <h2>关于我</h2>
+              <p>适合写当前关注、正在学习、兴趣和个人目标。</p>
+            </div>
+          </div>
           <div id="aboutList" class="list"></div>
-          <button type="button" data-add="about">+ 添加关于我</button>
+          <button type="button" data-add="about" class="add-button">+ 添加关于我</button>
 
-          <h2>联系方式</h2>
+          <div class="section-title">
+            <span>03</span>
+            <div>
+              <h2>联系方式</h2>
+              <p>支持 GitHub、博客、邮箱、掘金、CSDN 等链接。</p>
+            </div>
+          </div>
           <div id="contactsList" class="list"></div>
-          <button type="button" data-add="contact">+ 添加联系方式</button>
+          <button type="button" data-add="contact" class="add-button">+ 添加联系方式</button>
 
-          <h2>代表项目</h2>
+          <div class="section-title">
+            <span>04</span>
+            <div>
+              <h2>代表项目</h2>
+              <p>建议保留 3～5 个最能展示能力的项目。</p>
+            </div>
+          </div>
           <div id="projectsList" class="list"></div>
-          <button type="button" data-add="project">+ 添加项目</button>
+          <button type="button" data-add="project" class="add-button">+ 添加项目</button>
         </form>
 
         <section class="panel preview-panel">
           <div class="preview-head">
-            <h2>生成预览</h2>
+            <div>
+              <h2>生成预览</h2>
+              <p>复制或下载后即可覆盖 README.md。</p>
+            </div>
             <span id="status">Ready</span>
           </div>
           <textarea id="output" spellcheck="false"></textarea>
