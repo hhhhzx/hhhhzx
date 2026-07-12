@@ -1,3 +1,8 @@
+<!--
+  This README is generated from profile.config.json.
+  Edit the config or use editor/index.html, then run: node tools/generate-readme.js
+-->
+
 <div align="center">
 
 # 👋 Hi, I'm hhhhzx

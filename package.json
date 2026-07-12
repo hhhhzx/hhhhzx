@@ -1,0 +1,9 @@
+{
+  "name": "hhhhzx-profile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Config-driven GitHub Profile README generator.",
+  "scripts": {
+    "generate": "node tools/generate-readme.js"
+  }
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile README 可视化编辑器</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="hero">
+        <p class="eyebrow">hhhhzx profile builder</p>
+        <h1>可视化编辑 GitHub Profile README</h1>
+        <p>编辑配置、管理代表项目和联系方式，然后生成 README。少碰 Markdown，多做作品本身。</p>
+        <div class="actions">
+          <button id="loadSample">载入当前配置</button>
+          <label class="file-button">
+            导入配置
+            <input id="importConfig" type="file" accept="application/json" />
+          </label>
+          <button id="copyReadme">复制 README</button>
+          <button id="downloadReadme">下载 README.md</button>
+          <button id="downloadConfig">下载配置</button>
+        </div>
+      </section>
+
+      <section class="grid">
+        <form class="panel" id="profileForm">
+          <h2>基础信息</h2>
+          <label>
+            标题
+            <input name="title" />
+          </label>
+          <label>
+            简介
+            <input name="subtitle" />
+          </label>
+          <label>
+            打字动画链接
+            <input name="typingSvg" />
+          </label>
+
+          <h2>关于我</h2>
+          <div id="aboutList" class="list"></div>
+          <button type="button" data-add="about">+ 添加关于我</button>
+
+          <h2>联系方式</h2>
+          <div id="contactsList" class="list"></div>
+          <button type="button" data-add="contact">+ 添加联系方式</button>
+
+          <h2>代表项目</h2>
+          <div id="projectsList" class="list"></div>
+          <button type="button" data-add="project">+ 添加项目</button>
+        </form>
+
+        <section class="panel preview-panel">
+          <div class="preview-head">
+            <h2>生成预览</h2>
+            <span id="status">Ready</span>
+          </div>
+          <textarea id="output" spellcheck="false"></textarea>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
