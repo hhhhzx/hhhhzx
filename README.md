@@ -48,14 +48,15 @@
 
 </div>
 
-## 📊 GitHub 数据
+## ✨ 动态展示
 
 <div align="center">
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=hhhhzx&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="GitHub stats" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=hhhhzx&layout=compact&theme=tokyonight&hide_border=true" alt="Top languages" />
+<img src="./assets/profile-animation.svg" alt="animated developer card" width="92%" />
 
 </div>
+
+## 📊 GitHub 数据
 
 <div align="center">
 
