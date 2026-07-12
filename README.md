@@ -1,75 +1,101 @@
-## Hi there 👋
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=anuraghazra&theme=dark&show_icons=true)
-![](https://raw.githubusercontent.com/hhhhzx/hhhhzx/refs/heads/output/github-contribution-grid-snake.svg) 
-<p align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=git,kubernetes,docker,c,vim" />
-  </a>
+<div align="center">
+
+# 👋 Hi, I'm hhhhzx
+
+### 热爱前端体验，也喜欢把后端逻辑打磨得可靠一点
+
+<p>
+  <img src="https://komarev.com/ghpvc/?username=hhhhzx&label=Profile%20views&color=0e75b6&style=flat" alt="profile views" />
+  <img src="https://img.shields.io/badge/Focus-Full%20Stack-7c3aed?style=flat-square" alt="focus" />
+  <img src="https://img.shields.io/badge/Love-Coding%20%26%20Games-ff69b4?style=flat-square" alt="love" />
 </p>
 
-# 👋 Hi, I'm [你的名字]
-<!-- 个性化签名，比如「全栈开发者 | 热爱前端/后端」 -->
-💻 Full Stack Developer | 🚀 Vue/React/SpringBoot 实践者 | 🎮 游戏爱好者
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1200&color=36BCF7&center=true&vCenter=true&width=640&lines=Vue+%2F+React+%2F+Spring+Boot;Keep+building%2C+keep+learning;Make+ideas+visible+with+code" alt="typing intro" />
 
-<!-- 技术栈徽章（复用你之前的居中代码） -->
-<div align="center" style="letter-spacing: 2px; margin: 20px 0;">
-  <!-- 前端 -->
-  <img src="https://img.shields.io/badge/-Vue3-4FC08D?style=flat-square&logo=vue.js&logoColor=white" />
-  <img src="https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black" />
-  <img src="https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
-  <img src="https://img.shields.io/badge/-JavaScript-orange?style=flat-square&logo=javascript&logoColor=white" />
-  <img src="https://img.shields.io/badge/-Pinia-FFD43B?style=flat-square&logo=pinia&logoColor=black" />
-  <!-- 后端 -->
-  <br/>
-  <img src="https://img.shields.io/badge/-Spring%20Boot-6DB33F?style=flat-square&logo=spring-boot&logoColor=white" />
-  <img src="https://img.shields.io/badge/-Java-007396?style=flat-square&logo=java&logoColor=white" />
-  <img src="https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white" />
-  <img src="https://img.shields.io/badge/-Redis-DC382D?style=flat-square&logo=redis&logoColor=white" />
-  <!-- 趣味标签 -->
-  <img src="https://img.shields.io/badge/-Steam-000000?style=flat-square&logo=steam&logoColor=white" />
 </div>
 
-## 📌 关于我
-- 🔭 目前专注于：[你的技术方向，如「Vue3 + SpringBoot 全栈开发」]
-- 🌱 学习中：[正在学的技术，如「React 生态、Java Stream 编程」]
-- 💬 擅长：[技术领域，如「前端工程化、后端接口设计」]
-- 📫 联系我：[邮箱/博客/公众号，如 `xxx@xxx.com` | [个人博客](https://xxx.com)]
-- ⚡ 趣味：[个性化标签，如「Steam 游戏爱好者、摄影、徒步」]
+---
 
-## 📊 我的 GitHub 数据
-<!-- 自动生成的 GitHub 统计卡片 -->
+## 🧭 关于我
+
+- 🔭 目前关注：前端工程化、全栈项目实践、交互体验优化
+- 🌱 正在学习：React 生态、Java 后端、接口设计与性能优化
+- 💬 可以聊聊：Vue / React / TypeScript / Spring Boot / 项目从 0 到 1
+- 🎮 兴趣爱好：游戏、折腾工具、把脑子里的点子做成能跑起来的东西
+- ✨ 小目标：写更清晰的代码，做更有温度的产品
+
+## 🛠️ 技术栈
+
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=你的用户名&show_icons=true&theme=radical&count_private=true" alt="GitHub 统计" style="width: 48%;"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=你的用户名&layout=compact&theme=radical" alt="常用语言" style="width: 48%;"/>
+
+### Frontend
+
+<p>
+  <img src="https://skillicons.dev/icons?i=vue,react,ts,js,vite,pinia,html,css" alt="frontend skills" />
+</p>
+
+### Backend & Database
+
+<p>
+  <img src="https://skillicons.dev/icons?i=java,spring,mysql,redis,nodejs" alt="backend skills" />
+</p>
+
+### Tools
+
+<p>
+  <img src="https://skillicons.dev/icons?i=git,github,docker,kubernetes,vim,vscode" alt="tools" />
+</p>
+
 </div>
 
-## 🌟 重点项目
-| 项目名称 | 技术栈 | 简介 |
-|---------|--------|------|
-| [项目1](项目链接) | Vue3 + TS + Pinia | 「xxx 管理系统」：实现了 xxx 功能，适配移动端/PC 端 |
-| [项目2](项目链接) | SpringBoot + MySQL + Redis | 「xxx 接口服务」：提供 xxx 接口，支持高并发 |
+## 📊 GitHub 数据
 
-## 🎨 趣味数据
-<!-- GitHub 贡献图 -->
 <div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=你的用户名&theme=react-dark&hide_border=true" alt="贡献图" style="width: 100%;"/>
+
+<img height="165" src="https://github-readme-stats.vercel.app/api?username=hhhhzx&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="GitHub stats" />
+<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=hhhhzx&layout=compact&theme=tokyonight&hide_border=true" alt="Top languages" />
+
 </div>
 
+<div align="center">
 
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=hhhhzx&theme=tokyo-night&hide_border=true&area=true" alt="GitHub activity graph" />
 
+</div>
 
+## 🐍 贡献图
 
-<!--
-**hhhhzx/hhhhzx** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<div align="center">
 
-Here are some ideas to get you started:
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hhhhzx/hhhhzx/output/github-contribution-grid-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/hhhhzx/hhhhzx/output/github-contribution-grid-snake.svg" />
+  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/hhhhzx/hhhhzx/output/github-contribution-grid-snake.svg" />
+</picture>
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+</div>
+
+## 🚀 项目方向
+
+| 方向 | 技术关键词 | 我在关注什么 |
+| --- | --- | --- |
+| 前端应用 | Vue3 / React / TypeScript / Vite | 组件设计、状态管理、页面性能与工程化 |
+| 后端服务 | Spring Boot / Java / MySQL / Redis | 接口设计、数据建模、缓存与稳定性 |
+| DevOps & Tools | Git / Docker / GitHub Actions | 自动化流程、部署体验、开发效率 |
+
+## 🌟 最近想做得更好的事
+
+- 把项目 README 写得像产品说明书一样清楚
+- 多沉淀可复用组件、工具函数和实践笔记
+- 用更稳定的方式管理项目结构、接口文档和部署流程
+
+---
+
+<div align="center">
+
+### Thanks for visiting!
+
+愿代码保持清醒，愿灵感准时上线。  
+如果你也喜欢把想法做成作品，欢迎一起交流。
+
+</div>
