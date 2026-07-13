@@ -1,7 +1,7 @@
 {
   "profile": {
     "username": "hhhhzx",
-    "title": "👋 Hi, I'm hhhhzx",
+    "title": "👋 Hi, I'm Ananas🍍🍍",
     "subtitle": "热爱前端体验，也喜欢把后端逻辑打磨得可靠一点",
     "badges": [
       {
@@ -52,12 +52,12 @@
   "skills": [
     {
       "title": "Frontend",
-      "icons": "vue,react,ts,js,vite,pinia,html,css",
+      "icons": "css,html,js,php,pinia,react,ts,vite,vue",
       "alt": "frontend skills"
     },
     {
       "title": "Backend & Database",
-      "icons": "java,spring,mysql,redis,nodejs",
+      "icons": "java,mysql,nodejs,redis,rust,spring",
       "alt": "backend skills"
     },
     {

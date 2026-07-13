@@ -52,13 +52,13 @@
 ### Frontend
 
 <p>
-  <img src="https://skillicons.dev/icons?i=vue,react,ts,js,vite,pinia,html,css" alt="frontend skills" />
+  <img src="https://skillicons.dev/icons?i=css,html,js,php,pinia,react,ts,vite,vue" alt="frontend skills" />
 </p>
 
 ### Backend & Database
 
 <p>
-  <img src="https://skillicons.dev/icons?i=java,spring,mysql,redis,nodejs" alt="backend skills" />
+  <img src="https://skillicons.dev/icons?i=java,mysql,nodejs,redis,rust,spring" alt="backend skills" />
 </p>
 
 ### Tools
