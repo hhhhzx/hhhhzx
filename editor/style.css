@@ -488,7 +488,8 @@ textarea:focus {
 }
 
 .skill-preview,
-.skill-url {
+.skill-url,
+.showcase-preview {
   display: grid;
   gap: 8px;
   padding: 12px;
@@ -498,7 +499,8 @@ textarea:focus {
 }
 
 .skill-preview span,
-.skill-url span {
+.skill-url span,
+.showcase-preview span {
   color: var(--muted);
   font-size: 12px;
   font-weight: 800;
@@ -581,6 +583,62 @@ textarea:focus {
   accent-color: var(--accent);
 }
 
+.showcase-editor label {
+  margin-bottom: 0;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.color-grid input {
+  min-height: 42px;
+  padding: 4px;
+}
+
+.showcase-preview-svg {
+  width: 100%;
+  border-radius: 18px;
+}
+
+.showcase-preview-title {
+  fill: #f8fafc;
+  font: 800 24px "Segoe UI", Inter, sans-serif;
+}
+
+.showcase-preview-subtitle {
+  fill: #cbd5e1;
+  font: 500 13px "Segoe UI", Inter, sans-serif;
+}
+
+.showcase-preview-tags text,
+.showcase-preview-tags {
+  fill: #e0e7ff;
+  font: 700 12px "Segoe UI", Inter, sans-serif;
+}
+
+.showcase-preview-code {
+  fill: #93c5fd;
+  font: 700 11px "Fira Code", Consolas, monospace;
+}
+
+.showcase-preview-code.strong {
+  fill: #a7f3d0;
+}
+
+.field-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.field-note code {
+  color: #bae6fd;
+}
+
 .add-button {
   margin-top: 12px;
 }
@@ -657,6 +715,10 @@ textarea:focus {
 
   .item .row {
     grid-template-columns: 1fr;
+  }
+
+  .color-grid {
+    grid-template-columns: 1fr 1fr;
   }
 
   textarea {

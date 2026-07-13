@@ -1,9 +1,11 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const { execFileSync } = require('node:child_process');
 
 const root = path.resolve(__dirname, '..');
 const configPath = path.join(root, 'profile.config.json');
 const readmePath = path.join(root, 'README.md');
+const showcaseGeneratorPath = path.join(root, 'tools', 'generate-profile-animation.js');
 
 function readConfig() {
   return JSON.parse(fs.readFileSync(configPath, 'utf8'));
@@ -212,5 +214,8 @@ function renderReadme(config) {
 }
 
 const config = readConfig();
+if (config.dynamicShowcase?.enabled && config.dynamicShowcase?.src === './assets/profile-animation.svg') {
+  execFileSync(process.execPath, [showcaseGeneratorPath], { cwd: root, stdio: 'inherit' });
+}
 fs.writeFileSync(readmePath, renderReadme(config), 'utf8');
 console.log(`Generated ${path.relative(root, readmePath)} from ${path.relative(root, configPath)}`);

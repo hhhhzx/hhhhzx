@@ -60,6 +60,20 @@ const defaultConfig = {
     alt: "animated developer card",
     width: "92%"
   },
+  showcaseCard: {
+    title: "Hi, I'm Ananas🍍🍍",
+    subtitle: "Full-stack learner · Frontend explorer · Product-minded builder",
+    tags: ["Vue", "React", "Spring Boot", "TypeScript"],
+    codeLines: ["const dream = idea();", "build(dream).ship();", "while(true) learn();"],
+    colors: {
+      backgroundStart: "#0F172A",
+      backgroundMiddle: "#111827",
+      backgroundEnd: "#312E81",
+      accent: "#38BDF8",
+      accent2: "#A78BFA",
+      accent3: "#F472B6"
+    }
+  },
   githubData: {
     activityGraph: {
       enabled: true,
@@ -115,6 +129,7 @@ const skillIconIds = Array.isArray(window.SKILL_ICON_IDS) ? window.SKILL_ICON_ID
 const $ = (selector) => document.querySelector(selector);
 const badgesList = $("#badgesList");
 const skillsList = $("#skillsList");
+const showcaseList = $("#showcaseList");
 const aboutList = $("#aboutList");
 const contactsList = $("#contactsList");
 const projectsList = $("#projectsList");
@@ -293,6 +308,69 @@ function renderSkillPicker(item, index) {
   `;
 }
 
+function renderInlineSvgPreview(card = {}) {
+  const tags = (card.tags || []).slice(0, 5).map((tag, index) => {
+    const x = 24 + index * 96;
+    return `<text x="${x}" y="112">${escapeAttr(tag)}</text>`;
+  }).join("");
+  const colors = card.colors || {};
+
+  return `
+    <svg viewBox="0 0 620 180" class="showcase-preview-svg" role="img" aria-label="SVG 卡片预览">
+      <defs>
+        <linearGradient id="previewBg" x1="0" y1="0" x2="620" y2="180">
+          <stop stop-color="${escapeAttr(colors.backgroundStart || "#0F172A")}"/>
+          <stop offset="0.55" stop-color="${escapeAttr(colors.backgroundMiddle || "#111827")}"/>
+          <stop offset="1" stop-color="${escapeAttr(colors.backgroundEnd || "#312E81")}"/>
+        </linearGradient>
+      </defs>
+      <rect width="620" height="180" rx="22" fill="url(#previewBg)" />
+      <circle cx="500" cy="42" r="62" fill="${escapeAttr(colors.accent2 || "#A78BFA")}" opacity=".28" />
+      <circle cx="90" cy="150" r="54" fill="${escapeAttr(colors.accent || "#38BDF8")}" opacity=".22" />
+      <text x="24" y="48" class="showcase-preview-title">${escapeAttr(card.title || "")}</text>
+      <text x="24" y="78" class="showcase-preview-subtitle">${escapeAttr(card.subtitle || "")}</text>
+      <g class="showcase-preview-tags">${tags}</g>
+      <rect x="408" y="54" width="176" height="88" rx="14" fill="rgba(2,6,23,.62)" stroke="rgba(148,163,184,.3)" />
+      <text x="426" y="84" class="showcase-preview-code">${escapeAttr((card.codeLines || [])[0] || "")}</text>
+      <text x="426" y="108" class="showcase-preview-code strong">${escapeAttr((card.codeLines || [])[1] || "")}</text>
+      <text x="426" y="132" class="showcase-preview-code">${escapeAttr((card.codeLines || [])[2] || "")}</text>
+    </svg>
+  `;
+}
+
+function renderShowcaseEditor() {
+  const card = config.showcaseCard;
+  return `
+    <div class="item showcase-editor" data-type="showcase">
+      <div class="row">
+        ${input("title", card.title, "SVG 标题")}
+        ${input("subtitle", card.subtitle, "SVG 副标题")}
+      </div>
+      <label>
+        标签，使用英文逗号分隔
+        <input data-field="tags" value="${escapeAttr((card.tags || []).join(","))}" placeholder="Vue,React,Spring Boot,TypeScript" />
+      </label>
+      <label>
+        代码行，使用英文分号分隔
+        <input data-field="codeLines" value="${escapeAttr((card.codeLines || []).join(";"))}" placeholder="const dream = idea();;build(dream).ship();;while(true) learn();" />
+      </label>
+      <div class="color-grid">
+        <label>背景起始 <input type="color" data-color-field="backgroundStart" value="${escapeAttr(card.colors.backgroundStart)}" /></label>
+        <label>背景中段 <input type="color" data-color-field="backgroundMiddle" value="${escapeAttr(card.colors.backgroundMiddle)}" /></label>
+        <label>背景结束 <input type="color" data-color-field="backgroundEnd" value="${escapeAttr(card.colors.backgroundEnd)}" /></label>
+        <label>强调色 1 <input type="color" data-color-field="accent" value="${escapeAttr(card.colors.accent)}" /></label>
+        <label>强调色 2 <input type="color" data-color-field="accent2" value="${escapeAttr(card.colors.accent2)}" /></label>
+        <label>强调色 3 <input type="color" data-color-field="accent3" value="${escapeAttr(card.colors.accent3)}" /></label>
+      </div>
+      <div class="showcase-preview">
+        <span>编辑器内预览</span>
+        ${renderInlineSvgPreview(card)}
+      </div>
+      <p class="field-note">保存配置后运行 <code>npm run generate</code>，会重新生成 assets/profile-animation.svg。</p>
+    </div>
+  `;
+}
+
 function syncSkillItemVisuals(item, iconsValue) {
   const selectedIds = parseIconIds(iconsValue);
   const selected = new Set(selectedIds);
@@ -343,6 +421,8 @@ function renderList() {
     </div>
   `).join("");
 
+  showcaseList.innerHTML = renderShowcaseEditor();
+
   aboutList.innerHTML = config.about.map((item, index) => `
     <div class="item" data-type="about" data-index="${index}">
       ${input("value", item, "关于我的一行内容")}
@@ -390,6 +470,16 @@ function updateFromDom(event) {
   if (item) {
     const index = Number(item.dataset.index);
     const field = target.dataset.field;
+    if (item.dataset.type === "showcase") {
+      if (field === "tags") {
+        config.showcaseCard.tags = target.value.split(",").map((value) => value.trim()).filter(Boolean);
+      } else if (field === "codeLines") {
+        config.showcaseCard.codeLines = target.value.split(";").map((value) => value.trim()).filter(Boolean);
+      } else {
+        config.showcaseCard[field] = target.value;
+      }
+      showcaseList.querySelector(".showcase-preview").innerHTML = `<span>编辑器内预览</span>${renderInlineSvgPreview(config.showcaseCard)}`;
+    }
     if (item.dataset.type === "badge") config.profile.badges[index][field] = target.value;
     if (item.dataset.type === "skill") {
       config.skills[index][field] = target.value;
@@ -504,6 +594,15 @@ form.addEventListener("input", (event) => {
 
 form.addEventListener("change", (event) => {
   const target = event.target;
+  if (target.matches("[data-color-field]")) {
+    const field = target.dataset.colorField;
+    config.showcaseCard.colors[field] = target.value;
+    showcaseList.querySelector(".showcase-preview").innerHTML = `<span>编辑器内预览</span>${renderInlineSvgPreview(config.showcaseCard)}`;
+    updateOutput();
+    setStatus("Showcase updated");
+    return;
+  }
+
   if (!target.matches("[data-skill-option]")) return;
 
   const item = target.closest(".item");

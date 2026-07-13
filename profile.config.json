@@ -1,7 +1,7 @@
 {
   "profile": {
     "username": "hhhhzx",
-    "title": "👋 Hi, I'm Ananas🍍🍍",
+    "title": "👋 Hi, I'm hhhhzx",
     "subtitle": "热爱前端体验，也喜欢把后端逻辑打磨得可靠一点",
     "badges": [
       {
@@ -52,12 +52,12 @@
   "skills": [
     {
       "title": "Frontend",
-      "icons": "css,html,js,php,pinia,react,ts,vite,vue",
+      "icons": "vue,react,ts,js,vite,pinia,html,css",
       "alt": "frontend skills"
     },
     {
       "title": "Backend & Database",
-      "icons": "java,mysql,nodejs,redis,rust,spring",
+      "icons": "java,spring,mysql,redis,nodejs",
       "alt": "backend skills"
     },
     {
@@ -71,6 +71,29 @@
     "src": "./assets/profile-animation.svg",
     "alt": "animated developer card",
     "width": "92%"
+  },
+  "showcaseCard": {
+    "title": "Hi, I'm Ananas🍍🍍",
+    "subtitle": "Full-stack learner · Frontend explorer · Product-minded builder",
+    "tags": [
+      "Vue",
+      "React",
+      "Spring Boot",
+      "TypeScript"
+    ],
+    "codeLines": [
+      "const dream = idea();",
+      "build(dream).ship();",
+      "while(true) learn();"
+    ],
+    "colors": {
+      "backgroundStart": "#0F172A",
+      "backgroundMiddle": "#111827",
+      "backgroundEnd": "#312E81",
+      "accent": "#38BDF8",
+      "accent2": "#A78BFA",
+      "accent3": "#F472B6"
+    }
   },
   "githubData": {
     "activityGraph": {
