@@ -300,6 +300,10 @@ function renderSkillPicker(item, index) {
         <code>${skillIconUrl(item.icons)}</code>
       </div>
       <input class="icon-search" data-icon-search placeholder="搜索 Icon ID，例如 docker / vue / androidstudio" />
+      <div class="icon-search-meta">
+        <span data-icon-count>${skillIconIds.length} 个可选图标</span>
+        <span data-selected-count>已选 ${selected.size} 个</span>
+      </div>
       <div class="selected-icons">${parseIconIds(item.icons).map((id) => `<span>${id}</span>`).join("") || "<em>未选择图标</em>"}</div>
       <div class="icon-options" data-skill-options="${index}">
         ${options}
@@ -377,6 +381,7 @@ function syncSkillItemVisuals(item, iconsValue) {
   const preview = item.querySelector(".skill-preview img");
   const url = item.querySelector(".skill-url code");
   const selectedBox = item.querySelector(".selected-icons");
+  const selectedCount = item.querySelector("[data-selected-count]");
 
   item.querySelectorAll("[data-skill-option]").forEach((checkbox) => {
     checkbox.checked = selected.has(checkbox.value);
@@ -387,6 +392,7 @@ function syncSkillItemVisuals(item, iconsValue) {
   if (selectedBox) {
     selectedBox.innerHTML = selectedIds.map((id) => `<span>${id}</span>`).join("") || "<em>未选择图标</em>";
   }
+  if (selectedCount) selectedCount.textContent = `已选 ${selectedIds.length} 个`;
 }
 
 function setStatus(message) {
@@ -586,10 +592,17 @@ form.addEventListener("input", (event) => {
 
   const item = target.closest(".item");
   const keyword = target.value.trim().toLowerCase();
+  let visibleCount = 0;
   item.querySelectorAll(".icon-option").forEach((option) => {
     const id = option.dataset.iconId;
-    option.hidden = keyword && !id.includes(keyword);
+    const matched = !keyword || id.includes(keyword);
+    option.hidden = !matched;
+    if (matched) visibleCount += 1;
   });
+  const countLabel = item.querySelector("[data-icon-count]");
+  if (countLabel) {
+    countLabel.textContent = keyword ? `找到 ${visibleCount} 个图标` : `${skillIconIds.length} 个可选图标`;
+  }
 });
 
 form.addEventListener("change", (event) => {
@@ -612,9 +625,11 @@ form.addEventListener("change", (event) => {
   config.skills[index].icons = iconsValue;
 
   const iconsInput = item.querySelector('[data-field="icons"]');
+  const selectedCount = item.querySelector("[data-selected-count]");
 
   iconsInput.value = iconsValue;
   syncSkillItemVisuals(item, iconsValue);
+  if (selectedCount) selectedCount.textContent = `已选 ${checked.length} 个`;
 
   updateOutput();
   setStatus("Skills updated");
