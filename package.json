@@ -5,6 +5,7 @@
   "description": "Config-driven GitHub Profile README generator.",
   "scripts": {
     "generate": "node tools/generate-readme.js",
+    "generate:editor-config": "node tools/generate-editor-config-data.js",
     "generate:showcase": "node tools/generate-profile-animation.js",
     "generate:icons": "node tools/generate-skill-icons-data.js"
   }

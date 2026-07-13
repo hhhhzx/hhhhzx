@@ -5,7 +5,7 @@
 
 <div align="center">
 
-# 👋 Hi, I'm hhhhzx
+# 👋 Hi, I'm Ananas🍍🍍
 
 ### 热爱前端体验，也喜欢把后端逻辑打磨得可靠一点
 
@@ -52,7 +52,7 @@
 ### Frontend
 
 <p>
-  <img src="https://skillicons.dev/icons?i=vue,react,ts,js,vite,pinia,html,css" alt="frontend skills" />
+  <img src="https://skillicons.dev/icons?i=css,html,js,php,pinia,react,ts,vite,vue" alt="frontend skills" />
 </p>
 
 ### Backend & Database
@@ -64,7 +64,7 @@
 ### Tools
 
 <p>
-  <img src="https://skillicons.dev/icons?i=git,github,docker,kubernetes,vim,vscode,androidstudio" alt="tools" />
+  <img src="https://skillicons.dev/icons?i=androidstudio,docker,git,github,kubernetes,phpstorm,vim,vscode" alt="tools" />
 </p>
 
 </div>

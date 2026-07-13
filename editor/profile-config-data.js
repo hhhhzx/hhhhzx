@@ -1,4 +1,4 @@
-{
+window.PROFILE_CONFIG = {
   "profile": {
     "username": "hhhhzx",
     "title": "👋 Hi, I'm Ananas🍍🍍",
@@ -157,4 +157,4 @@
       "如果你也喜欢把想法做成作品，欢迎一起交流。"
     ]
   }
-}
+};

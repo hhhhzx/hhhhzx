@@ -123,7 +123,8 @@ const defaultConfig = {
   }
 };
 
-let config = structuredClone(defaultConfig);
+const initialConfig = window.PROFILE_CONFIG || defaultConfig;
+let config = structuredClone(initialConfig);
 const skillIconIds = Array.isArray(window.SKILL_ICON_IDS) ? window.SKILL_ICON_IDS : [];
 
 const $ = (selector) => document.querySelector(selector);
@@ -563,9 +564,9 @@ document.addEventListener("click", async (event) => {
   }
 
   if (event.target.id === "loadSample") {
-    config = structuredClone(defaultConfig);
+    config = structuredClone(initialConfig);
     renderList();
-    setStatus("Sample loaded");
+    setStatus("Current config loaded");
   }
 
   if (event.target.id === "copyReadme") {

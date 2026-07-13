@@ -572,7 +572,7 @@ textarea:focus {
   border: 1px solid rgba(148, 163, 184, 0.16);
   border-radius: 16px;
   background: rgba(2, 6, 23, 0.36);
-  height: 150px;
+  max-height: 150px;
   overflow-y: scroll;
 }
 

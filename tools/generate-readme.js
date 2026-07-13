@@ -6,6 +6,7 @@ const root = path.resolve(__dirname, '..');
 const configPath = path.join(root, 'profile.config.json');
 const readmePath = path.join(root, 'README.md');
 const showcaseGeneratorPath = path.join(root, 'tools', 'generate-profile-animation.js');
+const editorConfigGeneratorPath = path.join(root, 'tools', 'generate-editor-config-data.js');
 
 function readConfig() {
   return JSON.parse(fs.readFileSync(configPath, 'utf8'));
@@ -214,6 +215,7 @@ function renderReadme(config) {
 }
 
 const config = readConfig();
+execFileSync(process.execPath, [editorConfigGeneratorPath], { cwd: root, stdio: 'inherit' });
 if (config.dynamicShowcase?.enabled && config.dynamicShowcase?.src === './assets/profile-animation.svg') {
   execFileSync(process.execPath, [showcaseGeneratorPath], { cwd: root, stdio: 'inherit' });
 }
