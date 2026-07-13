@@ -52,7 +52,7 @@ const defaultConfig = {
   skills: [
     { title: "Frontend", icons: "vue,react,ts,js,vite,pinia,html,css", alt: "frontend skills" },
     { title: "Backend & Database", icons: "java,spring,mysql,redis,nodejs", alt: "backend skills" },
-    { title: "Tools", icons: "git,github,docker,kubernetes,vim,vscode", alt: "tools" }
+    { title: "Tools", icons: "git,github,docker,kubernetes,vim,vscode,androidstudio", alt: "tools" }
   ],
   dynamicShowcase: {
     enabled: true,
@@ -110,8 +110,11 @@ const defaultConfig = {
 };
 
 let config = structuredClone(defaultConfig);
+const skillIconIds = Array.isArray(window.SKILL_ICON_IDS) ? window.SKILL_ICON_IDS : [];
 
 const $ = (selector) => document.querySelector(selector);
+const badgesList = $("#badgesList");
+const skillsList = $("#skillsList");
 const aboutList = $("#aboutList");
 const contactsList = $("#contactsList");
 const projectsList = $("#projectsList");
@@ -121,6 +124,8 @@ const form = $("#profileForm");
 const projectCount = $("#projectCount");
 const contactCount = $("#contactCount");
 const aboutCount = $("#aboutCount");
+const badgeCount = $("#badgeCount");
+const skillCount = $("#skillCount");
 const readmeLines = $("#readmeLines");
 
 function mdText(value = "") {
@@ -237,8 +242,73 @@ function renderReadme(c) {
   ])}\n`;
 }
 
+function escapeAttr(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
 function input(name, value, placeholder = "") {
-  return `<input data-field="${name}" value="${String(value ?? "").replaceAll('"', "&quot;")}" placeholder="${placeholder}" />`;
+  return `<input data-field="${name}" value="${escapeAttr(value)}" placeholder="${escapeAttr(placeholder)}" />`;
+}
+
+function parseIconIds(value = "") {
+  return [...new Set(String(value)
+    .split(",")
+    .map((item) => item.trim().toLowerCase())
+    .filter(Boolean))];
+}
+
+function skillIconUrl(icons = "") {
+  return `https://skillicons.dev/icons?i=${parseIconIds(icons).join(",")}`;
+}
+
+function renderSkillPicker(item, index) {
+  const selected = new Set(parseIconIds(item.icons));
+  const options = skillIconIds.map((id) => `
+    <label class="icon-option" data-icon-id="${id}">
+      <input type="checkbox" data-skill-option value="${id}" ${selected.has(id) ? "checked" : ""} />
+      <span>${id}</span>
+    </label>
+  `).join("");
+
+  return `
+    <div class="skill-helper">
+      <div class="skill-preview">
+        <span>图片预览</span>
+        <img src="${skillIconUrl(item.icons)}" alt="${escapeAttr(item.alt || item.title || "skills preview")}" />
+      </div>
+      <div class="skill-url">
+        <span>生成链接</span>
+        <code>${skillIconUrl(item.icons)}</code>
+      </div>
+      <input class="icon-search" data-icon-search placeholder="搜索 Icon ID，例如 docker / vue / androidstudio" />
+      <div class="selected-icons">${parseIconIds(item.icons).map((id) => `<span>${id}</span>`).join("") || "<em>未选择图标</em>"}</div>
+      <div class="icon-options" data-skill-options="${index}">
+        ${options}
+      </div>
+    </div>
+  `;
+}
+
+function syncSkillItemVisuals(item, iconsValue) {
+  const selectedIds = parseIconIds(iconsValue);
+  const selected = new Set(selectedIds);
+  const preview = item.querySelector(".skill-preview img");
+  const url = item.querySelector(".skill-url code");
+  const selectedBox = item.querySelector(".selected-icons");
+
+  item.querySelectorAll("[data-skill-option]").forEach((checkbox) => {
+    checkbox.checked = selected.has(checkbox.value);
+  });
+
+  if (preview) preview.src = skillIconUrl(iconsValue);
+  if (url) url.textContent = skillIconUrl(iconsValue);
+  if (selectedBox) {
+    selectedBox.innerHTML = selectedIds.map((id) => `<span>${id}</span>`).join("") || "<em>未选择图标</em>";
+  }
 }
 
 function setStatus(message) {
@@ -249,6 +319,29 @@ function renderList() {
   form.title.value = config.profile.title;
   form.subtitle.value = config.profile.subtitle;
   form.typingSvg.value = config.profile.typingSvg;
+
+  badgesList.innerHTML = config.profile.badges.map((item, index) => `
+    <div class="item" data-type="badge" data-index="${index}">
+      <div class="row">
+        ${input("label", item.label, "标签名称，例如 Focus Full Stack")}
+        ${input("alt", item.alt, "图片说明")}
+      </div>
+      ${input("src", item.src, "徽章图片地址，例如 shields.io 链接")}
+      <button type="button" data-remove>删除</button>
+    </div>
+  `).join("");
+
+  skillsList.innerHTML = config.skills.map((item, index) => `
+    <div class="item" data-type="skill" data-index="${index}">
+      <div class="row">
+        ${input("title", item.title, "分组标题，例如 Frontend")}
+        ${input("alt", item.alt, "图片说明")}
+      </div>
+      ${input("icons", item.icons, "图标 ID，用英文逗号分隔，例如 vue,react,ts")}
+      ${renderSkillPicker(item, index)}
+      <button type="button" data-remove>删除</button>
+    </div>
+  `).join("");
 
   aboutList.innerHTML = config.about.map((item, index) => `
     <div class="item" data-type="about" data-index="${index}">
@@ -287,6 +380,7 @@ function renderList() {
 function updateFromDom(event) {
   const target = event.target;
   if (!target.matches("input")) return;
+  if (target.matches("[data-skill-option], [data-icon-search]")) return;
 
   config.profile.title = form.title.value;
   config.profile.subtitle = form.subtitle.value;
@@ -296,6 +390,11 @@ function updateFromDom(event) {
   if (item) {
     const index = Number(item.dataset.index);
     const field = target.dataset.field;
+    if (item.dataset.type === "badge") config.profile.badges[index][field] = target.value;
+    if (item.dataset.type === "skill") {
+      config.skills[index][field] = target.value;
+      if (field === "icons") syncSkillItemVisuals(item, target.value);
+    }
     if (item.dataset.type === "about") config.about[index] = target.value;
     if (item.dataset.type === "contact") config.contacts[index][field] = target.value;
     if (item.dataset.type === "project") config.projects[index][field] = target.value;
@@ -309,6 +408,8 @@ function updateOutput() {
   projectCount.textContent = config.projects.length;
   contactCount.textContent = config.contacts.length;
   aboutCount.textContent = config.about.length;
+  badgeCount.textContent = config.profile.badges.length;
+  skillCount.textContent = config.skills.length;
   readmeLines.textContent = output.value.split("\n").length;
   setStatus("Updated");
 }
@@ -325,6 +426,16 @@ function download(filename, content) {
 
 document.addEventListener("click", async (event) => {
   const add = event.target.dataset.add;
+  if (add === "badge") config.profile.badges.push({
+    label: "New Badge",
+    src: "https://img.shields.io/badge/New-Badge-38BDF8?style=flat-square",
+    alt: "new badge"
+  });
+  if (add === "skill") config.skills.push({
+    title: "New Skills",
+    icons: "vue,react,ts",
+    alt: "new skills"
+  });
   if (add === "about") config.about.push("✨ 新增内容");
   if (add === "contact") config.contacts.push({
     label: "New Contact",
@@ -346,6 +457,8 @@ document.addEventListener("click", async (event) => {
   if (event.target.matches("[data-remove]")) {
     const item = event.target.closest(".item");
     const index = Number(item.dataset.index);
+    if (item.dataset.type === "badge") config.profile.badges.splice(index, 1);
+    if (item.dataset.type === "skill") config.skills.splice(index, 1);
     if (item.dataset.type === "about") config.about.splice(index, 1);
     if (item.dataset.type === "contact") config.contacts.splice(index, 1);
     if (item.dataset.type === "project") config.projects.splice(index, 1);
@@ -376,6 +489,37 @@ document.addEventListener("click", async (event) => {
 });
 
 form.addEventListener("input", updateFromDom);
+
+form.addEventListener("input", (event) => {
+  const target = event.target;
+  if (!target.matches("[data-icon-search]")) return;
+
+  const item = target.closest(".item");
+  const keyword = target.value.trim().toLowerCase();
+  item.querySelectorAll(".icon-option").forEach((option) => {
+    const id = option.dataset.iconId;
+    option.hidden = keyword && !id.includes(keyword);
+  });
+});
+
+form.addEventListener("change", (event) => {
+  const target = event.target;
+  if (!target.matches("[data-skill-option]")) return;
+
+  const item = target.closest(".item");
+  const index = Number(item.dataset.index);
+  const checked = [...item.querySelectorAll("[data-skill-option]:checked")].map((inputEl) => inputEl.value);
+  const iconsValue = checked.join(",");
+  config.skills[index].icons = iconsValue;
+
+  const iconsInput = item.querySelector('[data-field="icons"]');
+
+  iconsInput.value = iconsValue;
+  syncSkillItemVisuals(item, iconsValue);
+
+  updateOutput();
+  setStatus("Skills updated");
+});
 
 $("#importConfig").addEventListener("change", async (event) => {
   const [file] = event.target.files;

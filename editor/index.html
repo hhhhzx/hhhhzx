@@ -72,6 +72,14 @@
           <p>关于我条目</p>
         </div>
         <div>
+          <span id="badgeCount">0</span>
+          <p>顶部标签</p>
+        </div>
+        <div>
+          <span id="skillCount">0</span>
+          <p>技能分组</p>
+        </div>
+        <div>
           <span id="readmeLines">0</span>
           <p>README 行数</p>
         </div>
@@ -102,6 +110,26 @@
           <div class="section-title">
             <span>02</span>
             <div>
+              <h2>顶部标签</h2>
+              <p>管理顶部展示的访问量、Focus、Love 等徽章图片地址。</p>
+            </div>
+          </div>
+          <div id="badgesList" class="list"></div>
+          <button type="button" data-add="badge" class="add-button">+ 添加顶部标签</button>
+
+          <div class="section-title">
+            <span>03</span>
+            <div>
+              <h2>技能图标</h2>
+              <p>搜索并勾选 Icon ID，自动生成 skillicons 图片链接并即时预览。</p>
+            </div>
+          </div>
+          <div id="skillsList" class="list"></div>
+          <button type="button" data-add="skill" class="add-button">+ 添加技能分组</button>
+
+          <div class="section-title">
+            <span>04</span>
+            <div>
               <h2>关于我</h2>
               <p>适合写当前关注、正在学习、兴趣和个人目标。</p>
             </div>
@@ -110,7 +138,7 @@
           <button type="button" data-add="about" class="add-button">+ 添加关于我</button>
 
           <div class="section-title">
-            <span>03</span>
+            <span>05</span>
             <div>
               <h2>联系方式</h2>
               <p>支持 GitHub、博客、邮箱、掘金、CSDN 等链接。</p>
@@ -120,7 +148,7 @@
           <button type="button" data-add="contact" class="add-button">+ 添加联系方式</button>
 
           <div class="section-title">
-            <span>04</span>
+            <span>06</span>
             <div>
               <h2>代表项目</h2>
               <p>建议保留 3～5 个最能展示能力的项目。</p>
@@ -143,6 +171,7 @@
       </section>
     </main>
 
+    <script src="./skill-icons-data.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>

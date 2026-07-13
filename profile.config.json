@@ -62,7 +62,7 @@
     },
     {
       "title": "Tools",
-      "icons": "git,github,docker,kubernetes,vim,vscode",
+      "icons": "git,github,docker,kubernetes,vim,vscode,androidstudio",
       "alt": "tools"
     }
   ],

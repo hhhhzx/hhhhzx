@@ -316,7 +316,7 @@ button:active,
 
 .stats-strip {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 1px;
   overflow: hidden;
   margin-top: 18px;
@@ -479,6 +479,106 @@ textarea:focus {
   color: #fecdd3;
   background: rgba(244, 63, 94, 0.13);
   box-shadow: none;
+}
+
+.skill-helper {
+  display: grid;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.skill-preview,
+.skill-url {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.44);
+}
+
+.skill-preview span,
+.skill-url span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.skill-preview img {
+  max-width: 100%;
+  min-height: 48px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.skill-url code {
+  overflow: auto;
+  color: #bae6fd;
+  font: 12px/1.6 "Fira Code", Consolas, monospace;
+  white-space: nowrap;
+}
+
+.icon-search {
+  border-style: dashed;
+}
+
+.selected-icons,
+.icon-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.selected-icons span,
+.selected-icons em {
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 999px;
+  padding: 5px 9px;
+  color: #cffafe;
+  background: rgba(8, 145, 178, 0.16);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.selected-icons em {
+  color: var(--muted);
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.icon-options {
+  overflow: auto;
+  max-height: 230px;
+  padding: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 16px;
+  background: rgba(2, 6, 23, 0.36);
+}
+
+.icon-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 999px;
+  padding: 6px 9px;
+  color: #dbeafe;
+  background: rgba(15, 23, 42, 0.56);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.icon-option:has(input:checked) {
+  border-color: rgba(56, 189, 248, 0.58);
+  color: #ecfeff;
+  background: rgba(14, 165, 233, 0.24);
+}
+
+.icon-option input {
+  width: auto;
+  accent-color: var(--accent);
 }
 
 .add-button {

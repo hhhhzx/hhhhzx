@@ -4,6 +4,7 @@
   "private": true,
   "description": "Config-driven GitHub Profile README generator.",
   "scripts": {
-    "generate": "node tools/generate-readme.js"
+    "generate": "node tools/generate-readme.js",
+    "generate:icons": "node tools/generate-skill-icons-data.js"
   }
 }
